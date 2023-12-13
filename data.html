@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Horizon</title>
+    <!--definición de estilos en CSS-->   
+    <style> 
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #logo_home_top { 
+            height: 80px;
+            position: absolute;
+            top: 20px; 
+            left: 60px;
+            transform: translateX(-50%);
+        }  
+
+        #topbar {
+            background-color: #D9F9FF; 
+            height: 10px; 
+            width: 100%; 
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+        }
+
+        #title {
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 100;
+            color: #174B6B; 
+            position: relative; 
+            top: 190px;
+            left: 100px;
+            font-size: 75px; 
+        }
+        #graph_image{
+            width: 40%; 
+            position: absolute;
+            top: 250px;
+            left: 650px; 
+        }
+        #goBackButton {
+            position: absolute;
+            display: inline-block;
+            top: 40px;
+            right: 200px;
+            padding: 15px 20px;
+            background-color: #174B6B;
+            color: #D9F9FF;
+            text-align: center;
+            border: none; 
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 5px;
+            cursor: pointer; 
+            transition: background-color 0.3s;
+        }
+
+        #goBackButton:hover {
+            background-color: #0c2d48;
+        }
+
+        input[type="submit"] {
+            position: absolute;
+            top: 700px;
+            left: 100px;
+            background-color: #174B6B; 
+            color: #D9F9FF; 
+            padding: 17px 25px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer;
+            transition: background-color 0.3s; 
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0c2d48; 
+        }
+
+
+        select{
+            position: absolute;
+            top: 540px;
+            left: 100px;
+            width: 9%;
+            padding: 13px 15px;
+            
+
+        }
+
+        input[type="text"] {
+            position: absolute;
+            top: 592px;
+            left: 100px;
+            width: 16%; 
+            padding: 15px 17px; 
+            margin: 8px 0; 
+            display: inline-block;
+            border: 1px solid #ccc; 
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding-top: 55px; 
+            background-color: #FFFFFF ;
+
+        }
+
+    </style>
+</head>
+<body>
+
+    <script> 
+    /*Función en java script para regresar al menú*/
+        function goBack() {
+            window.location.href = '/';
+        }
+    </script>
+    <!--Formulario para enviar datos desde el botón de tipo de grafico o desde el botón de idUsuario o idUbicacion para pasar como parametros a python-->
+    <form id="graphForm" action="http://127.0.0.1:8000/conecta" method="post">
+        <!--Botón de tipo de grafica-->
+        <select name="graphType">
+            <option value="MQ-7 x Ubicación">MQ-7 x Ubicación Individuales</option>
+            <option value="Pulso x Usuario">Pulso x Usuario</option>
+            <option value="Oxigenacion x Usuario">Oxigenacion x Usuario</option>
+            <option value="Temperatura x Usuario">Temperatura x Usuario</option>
+            <option value="Edad x Pulso">Edad x Pulso</option>
+            <option value="Oxigenación x Ubicación">Oxigenacion x Ubicación</option>
+            <option value="MQ-7 x Ubicaciónes">MQ-7 x Ubicaciónes</option>
+
+        <!--Botón de id en texto-->
+        </select>
+        <input type="text" name="userIdOrCityId" placeholder="Ingrese ID de usuario o ubicación">
+        <input type="submit" value="Generar gráfica">
+    </form>
+    <!--Jinja para definiciónes de direcciones de imagenes-->
+    <img id="graph_image" src = "{{url_for('static',filename='images/graph.png')}}"alt = "graph image">
+    <h1 id="topbar"></h1>
+
+    <button id="goBackButton" onclick="goBack()">Home</button>
+    <h2 id="title">Personalized<br>Data<br>Engine.</h2>
+    <img id="logo_home_top" src="{{url_for('static',filename='images/logo.png')}}" alt="Health Horizon Logo">
+    
+
+
+</body>
+</html>

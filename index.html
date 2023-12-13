@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Horizon</title>
+    <!--Estilos en CSS-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #topbar {
+            background-color: #D9F9FF;
+            height: 10px;
+            width: 100%; 
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            z-index: 1000;
+        }
+
+
+
+        #logo_home_top {
+            height: 80px;
+            position: relative;
+            top: -40px; 
+            left: 40px;
+            transform: translateX(-50%);
+        }   
+
+        #credits{
+
+            font-family: 'Montserrat',sans-serif;
+            font-weight: 100;
+            color: #174B6B;
+            position: relative;
+            top: 670px;
+            left: -600px;
+            text-align: center;   
+        }
+        #mainTitle {
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 100;
+            color: #174B6B; 
+            position: relative; 
+            top: -65px;
+            left: 80px;
+            font-size: 24px;
+        }
+
+        #mainTitle_data {
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 150;
+            color: #174B6B; 
+            position: relative; 
+            top: 1250px;
+            left: 80px;
+            font-size: 24px; 
+        }
+
+        #contactInfo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 100;
+            color: #174B6B;
+            position: absolute; 
+            top: 40px;
+            right: 20px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        #infoBox {
+            width: 30%; 
+            height: 520px; 
+            position: absolute;
+            right: 5%; 
+            top: 180px; 
+            background-color: #F7FCFC; 
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 50px;
+            color: #174B6B; 
+            text-align: center;
+            display: flex;                 
+            justify-content: center;      
+            align-items: center;          
+            text-align: center;   
+            font-weight: 100;
+
+        }
+
+        #infoBox2 {
+            width: 30%; 
+            height: 520px; 
+            position: absolute;
+            left: 5%; 
+            top: 800px; 
+            background-color: #F7FCFC; 
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+            color: #174B6B;
+            font-size: 50px;
+            color: #174B6B; 
+            text-align: center;
+            display: flex;                 
+            justify-content: center;      
+            align-items: center;          
+            text-align: center;   
+            font-weight: 100;
+            
+
+        }
+
+        #ThermoBeatImage, #ThermoBeatImage2 {
+            width: 50%; 
+            position: absolute;
+            
+        }
+
+        #ThermoBeatImage {
+            top: 180px;
+            left: 8%; 
+        }
+
+        #ThermoBeatImage2 {
+            top: 800px; 
+            right: 8%;
+        }
+    
+
+        body {
+            padding-top: 55px; 
+            background-color: #F7FCFC ;
+            min-height: 900px;
+
+        }
+
+        #retrievedDataButton {
+            position: absolute;
+            display: inline-block;
+            top: 65px;
+            right: 200px;
+            padding: 10px 15px;
+            background-color: #174B6B;
+            color: #D9F9FF;
+            text-align: center;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 5px;
+            cursor: pointer; 
+            transition: background-color 0.3s;
+        }
+
+        #retrievedDataButton:hover {
+            background-color: #0c2d48;
+        }
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--Fución en java script para navegar hacia la pagina de la interfaz de datos-->
+    <script>
+    function navigateToDataPage() {
+        window.location.href = '/data';
+    }
+
+        
+    </script>
+    
+
+    <h1 id="topbar"></h1>
+    <!--Jinja para direcciones de imagenes-->
+    <img id = "logo_home_top" src ="{{ url_for('static', filename='images/logo.png') }}" alt="Health Horizon Logo">
+    <h2 id="mainTitle">Health Horizon</h2><h3 id="contactInfo">Phone number:<br> +52 55 2107 4794<br>Email:<br> contact@hhorizon.com</h3>
+    <button id="retrievedDataButton" onclick="navigateToDataPage()">Data</button>
+    <img id="ThermoBeatImage" src="{{url_for('static',filename='images/ThermoBeat.png')}}" alt="Thermo Beat">
+    <div id="infoBox">"Data-Powered Wellness<br> for Industrial Workers."</div>
+    <div id="credits">A Sebastian Borjas <br> Vicente Ramos <br> Production </div>
+    
+</body>
+</html>
